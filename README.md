@@ -29,7 +29,7 @@ We love collaboration! Your contributions can make a real impact. Whether you're
 Download application, register, engage in selected event(s), leave user blog experience(s) for other user's to view. 
 
 ## Questions
-If ypu have any questions, please reach out via email: VoyageCraft@gmail.com
+If you have any questions, please reach out via email: VoyageCraft@gmail.com
 We can also be reached on GitHub:github.com/Voyage-Craft
 Any questions and or concerns please reach out via email/Github. We encourage feed back and are here to help!
     
