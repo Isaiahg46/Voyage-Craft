@@ -169,3 +169,75 @@ header {
 .blog-card-content a:hover {
   background: #0056b3;
 }
+
+@media (max-width: 768px) {
+  header {
+    padding: 20px 0;
+  }
+
+  .folder-container {
+    padding: 10px;
+  }
+
+  .folder-tabs {
+    flex-direction: column;
+  }
+
+  .tab {
+    padding: 10px;
+    text-align: center;
+  }
+
+  .folder-container section {
+    padding: 15px;
+    margin-top: 15px;
+  }
+
+  .blog-container {
+    padding: 15px;
+  }
+
+  .blog-form {
+    padding: 15px;
+  }
+
+  .blog-form input, .blog-form textarea {
+    padding: 8px;
+  }
+
+  .blog-form button {
+    padding: 8px 15px;
+  }
+
+  .blog-item {
+    padding: 10px 0;
+  }
+
+  .blog-section {
+    padding: 15px;
+  }
+
+  .blog-section h1 {
+    font-size: 2em;
+  }
+
+  .blog-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .blog-card-content {
+    padding: 10px;
+  }
+
+  .blog-card-content h2 {
+    font-size: 1.2em;
+  }
+
+  .blog-card-content p {
+    font-size: 0.9em;
+  }
+
+  .blog-card-content a {
+    padding: 8px 10px;
+  }
+}
