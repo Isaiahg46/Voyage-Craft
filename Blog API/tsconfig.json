@@ -1,0 +1,29 @@
+{
+    "compilerOptions": {
+      /* Modules */
+      "rootDir": "server" /* Specify the root folder within your source files. */,
+  
+      /* Emit */
+      "outDir": "dist", /* Specify an output folder for all emitted files. */
+      // "noEmitOnError": true /* Disable emitting files if any type checking errors are reported. */
+
+          // other options
+  
+          "esModuleInterop": true,
+    },
+    "include": ["server"],
+    "exclude": ["dist"],
+    "typeRoots": ["./node_modules/@types", "./src/types"]
+    
+  
+  
+  
+  
+
+    
+}
+
+
+
+
+    
