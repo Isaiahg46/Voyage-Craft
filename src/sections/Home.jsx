@@ -18,8 +18,12 @@ const Home = () => {
     setImages(shuffledImages);
   }, []);
 
+  const homeStyle = {
+    textAlign: 'center'
+  };
+
   return (
-    <section className="home">
+    <section className="home" style={homeStyle}>
       <h2>Discover Your Next Destination</h2>
       <p>Explore exciting travel destinations and tips.</p>
       <div className="image-row">
