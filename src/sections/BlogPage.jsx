@@ -11,9 +11,8 @@ const postBlog = () => {
 
 return(
 <section className="blog-section">
-<h1>Latest Blog Posts</h1>
 <div className="blog-container">
-    <h1 className="blog-header">Welcome to My Blog</h1>
+    <h1 className="blog-header">Voyage Blog</h1>
     <div className="blog-form">
       <input type="text" id="blog-title" placeholder="Enter blog title" />
       <textarea id="blog-content" placeholder="Write your blog content here" rows="5"></textarea>
