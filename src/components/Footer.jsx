@@ -1,8 +1,7 @@
-// Social Meda Icons
 const Footer = () => {
   return (
     <footer>
-      
+      <small>&quot;&COPY; 2021 VoyageCraft&quot;</small>
     </footer>
   );
 };
