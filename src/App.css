@@ -1,10 +1,26 @@
 /* App.css */
 
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: url('assets/images/worldmap.jpg');
+  color: #222;
+  margin: 0;
+  padding: 0;
+}
+
 header {
-  background-color: #4CAF50;
+  background: linear-gradient(90deg, rgba(90,198,6,1) 25%, rgba(199,146,76,1) 50%, rgba(0,255,242,1) 75%); 
   color: white;
   text-align: center;
-  padding: 10px 0;
+  padding: 8.5px 0;
+
+}
+
+#resuts {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .folder-container {
