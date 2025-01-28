@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
-function TravelSearch() {
+const TravelSearch = () => {
   const [query, setQuery] = useState('');
   const [results, setResults] = useState([]);
-  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleSearch = async () => {
     if (!query) {
@@ -19,10 +19,14 @@ function TravelSearch() {
 
     try {
       const response = await fetch(apiUrl);
-      if (!response.ok) throw new Error('Failed to fetch data');
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`Failed to fetch data: ${response.status} ${response.statusText} - ${errorText}`);
+      }
       const data = await response.json();
       setResults(data.destinations || []);
     } catch (error) {
+      console.error('Error fetching data:', error);
       setError(error.message);
     } finally {
       setLoading(false);
@@ -32,7 +36,7 @@ function TravelSearch() {
   return (
     <div style={{ fontFamily: 'Arial, sans-serif', margin: '20px' }}>
       <div id="search-container" style={{ textAlign: 'center' }}>
-        <h1>Search for Travel Destinations</h1>
+        <h2>Search for Travel Destinations</h2>
         <input
           type="text"
           value={query}
@@ -45,44 +49,23 @@ function TravelSearch() {
           style={{
             padding: '10px 20px',
             fontSize: '16px',
-            marginLeft: '10px',
-            cursor: 'pointer',
+            marginLeft: '10px'
           }}
         >
           Search
         </button>
       </div>
-      <div id="results-container" style={{ marginTop: '20px' }}>
-        <h2>Results:</h2>
-        {loading && <p>Loading...</p>}
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-        <div id="results">
-          {results.length > 0 ? (
-            results.map((destination, index) => (
-              <div
-                key={index}
-                style={{
-                  border: '1px solid #ddd',
-                  padding: '15px',
-                  margin: '10px 0',
-                  borderRadius: '5px',
-                  backgroundColor: '#f9f9f9',
-                }}
-              >
-                <h3>{destination.name}</h3>
-                <p>{destination.description}</p>
-                <p>
-                  <strong>Country:</strong> {destination.country}
-                </p>
-              </div>
-            ))
-          ) : (
-            !loading && <p>No results found.</p>
-          )}
-        </div>
+      {loading && <p>Loading...</p>}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
+      <div id="results-container" style={{ textAlign: 'center', marginTop: '20px' }}>
+        {results.map((result, index) => (
+          <div key={index} style={{ marginBottom: '10px' }}>
+            {result.name}
+          </div>
+        ))}
       </div>
     </div>
   );
-}
+};
 
 export default TravelSearch;
