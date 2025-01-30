@@ -1,58 +1,54 @@
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+
 const BlogPage = () => {
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
-const postBlog = () => {
-  const title = document.getElementById('blog-title').value;
-  const content = document.getElementById('blog-content').value;
-  const blogList = document.getElementById('blog-list');
-  const newBlogItem = document.createElement('li');
-  newBlogItem.innerHTML = `<h3>${title}</h3><p>${content}</p>`;
-  blogList.appendChild(newBlogItem);
-};
+  // Replace with your Blogger Blog ID and API Key
+  const blogId = '252009266376575171'; // Get this from the Blogger dashboard
+  const apiKey = 'AIzaSyDrjcrh3E7vMf-_KI3oRtlD2jYu7AAWNSA'; // Your API Key
 
-return(
-<section className="blog-section">
-<div className="blog-container">
-    <h1 className="blog-header">Voyage Blog</h1>
-    <div className="blog-form">
-      <input type="text" id="blog-title" placeholder="Enter blog title" />
-      <textarea id="blog-content" placeholder="Write your blog content here" rows="5"></textarea>
-      <button onClick={() => postBlog()}>Post Blog</button>
-    </div>
-    <ul className="blog-list" id="blog-list">
-      {/* Blog items will appear here */}
-    </ul>
-  </div>
-    <div className="blog-cards">
-      {/* Blog Post 1 */}
-      <div className="blog-card">
-        <img src="https://via.placeholder.com/300x200" alt="Blog Post Image" />
-        <div className="blog-card-content">
-          <h2>Blog Post Title 1</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean convallis quam.</p>
-          <a href="#">Read More</a>
-        </div>
-      </div>
-      {/* Blog Post 2 */}
-      <div className="blog-card">
-        <img src="https://via.placeholder.com/300x200" alt="Blog Post Image" />
-        <div className="blog-card-content">
-          <h2>Blog Post Title 2</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean convallis quam.</p>
-          <a href="#">Read More</a>
-        </div>
-      </div>
-      {/* Blog Post 3 */}
-      <div className="blog-card">
-        <img src="https://via.placeholder.com/300x200" alt="Blog Post Image" />
-        <div className="blog-card-content">
-          <h2>Blog Post Title 3</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean convallis quam.</p>
-          <a href="#">Read More</a>
-        </div>
-      </div>
-    </div>
-</section>
-);
-};
+  // Function to fetch blog posts from Blogger API
+  const fetchPosts = async () => {
+    try {
+      const response = await axios.get(
+        `https://www.googleapis.com/blogger/v3/blogs/${blogId}/posts?key=${apiKey}`
+      );
+      setPosts(response.data.items); // Save posts to state
+      setLoading(false);
+    } catch (error) {
+      setError('Error fetching posts');
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    fetchPosts(); // Fetch posts on component mount
+  }, []);
 
-export default BlogPage;
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>{error}</div>;
+
+  return (
+    <div>
+      <h1>Blog Posts</h1>
+      {posts && posts.length > 0 ? (
+        <ul>
+          {posts.map((post) => (
+            <li key={post.id}>
+              <h2>{post.title}</h2>
+              <p>{post.content.substring(0, 200)}...</p>
+              <a href={post.url} target="_blank" rel="noopener noreferrer">Read more</a>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p>No posts available.</p>
+      )}
+      </div>
+    );
+  };
+  
+  export default BlogPage;
+
