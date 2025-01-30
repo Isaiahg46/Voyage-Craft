@@ -15,9 +15,9 @@ Here are the steps for installation:
   ```
 2. **Enter CLI Command**:
    Go to voyage-craft in terminal and ender code:
-   ```bash
-   npm run dev
-   ```
+  ```bash
+  npm run dev
+  ```
 3. **Click on Link**
 
 ## Live Demo
