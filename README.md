@@ -23,7 +23,7 @@ Here are the steps for installation:
 ## Live Demo
 Live Demo can be seen here:
 
-## Contact 📧
+## Contact
 Fo+r any questions or feeback, don't hesitate to reach out: 
 
 GitHub: Isaiahg46
