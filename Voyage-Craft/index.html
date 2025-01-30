@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventbrite Events</title>
+</head>
+<body>
+    <h1>Upcoming Events</h1>
+    <input type="text" id="search-input" placeholder="Search for events..." />
+    <button id="search-button">Search</button>
+    <ul id="events-list"></ul>
+    <script>
+        const searchButton = document.getElementById('search-button');
+        const searchInput = document.getElementById('search-input');
+        const eventsList = document.getElementById('events-list');
+
+        
+        const fetchEvents = async (query) => {
+            const response = await fetch(`/events?q=${query}`);
+            const data = await response.json();
+            eventsList.innerHTML = ''; 
+            data.events.forEach(event => {
+                const li = document.createElement('li');
+                li.textContent = event.name.text;
+                eventsList.appendChild(li);
+            });
+        };
+
+ 
+        searchButton.addEventListener('click', () => {
+            const query = searchInput.value.trim();
+            if (query) {
+                fetchEvents(query); 
+            }
+        });
+    </script>
+</body>
+</html>

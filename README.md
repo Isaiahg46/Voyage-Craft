@@ -1,2 +1,2 @@
 # Voyage-Craft
-Travel Blog
+Travel events
