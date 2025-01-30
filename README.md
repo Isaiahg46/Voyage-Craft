@@ -24,8 +24,8 @@ Here are the steps for installation:
 Live Demo can be seen here:
 
 ## Contact
-Fo+r any questions or feeback, don't hesitate to reach out: 
+For any questions or feeback, don't hesitate to reach out: 
 
 GitHub: Isaiahg46
-
+ 
 Email: 
