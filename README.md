@@ -14,7 +14,7 @@ Here are the steps for installation:
   git clone https://github.com/your-username/Voyage-Craft.git
   ```
 2. **Enter CLI Command**:
-   Go to voyage-craft in terminal and ender code:
+   Go to voyage-craft in terminal and enter code:
   ```bash
   npm run dev
   ```
